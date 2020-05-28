@@ -796,3 +796,36 @@ const gInvalidKeyframeEffectOptionTests = [
   { desc: 'a variable easing', input: { easing: 'var(--x)' } },
   { desc: 'a multi-value easing', input: { easing: 'ease-in-out, ease-out' } },
 ];
+
+const scroll_timeline = new ScrollTimeline({ timeRange: 100 });
+const gAnimationTimelineTests = [
+  {
+    expectedTimeline: document.timeline,
+    expectedTimelineDescription: 'document.timeline',
+    description: 'with no timeline parameter'
+  },
+  {
+    timeline: undefined,
+    expectedTimeline: document.timeline,
+    expectedTimelineDescription: 'document.timeline',
+    description: 'with undefined timeline'
+  },
+  {
+    timeline: null,
+    expectedTimeline: null,
+    expectedTimelineDescription: 'null',
+    description: 'with null timeline'
+  },
+  {
+    timeline: document.timeline,
+    expectedTimeline: document.timeline,
+    expectedTimelineDescription: 'document.timeline',
+    description: 'with DocumentTimeline'
+  },
+  {
+    timeline: scroll_timeline,
+    expectedTimeline: scroll_timeline,
+    expectedTimelineDescription: 'ScrollTimeline',
+    description: 'with ScrollTimeline'
+  },
+];
